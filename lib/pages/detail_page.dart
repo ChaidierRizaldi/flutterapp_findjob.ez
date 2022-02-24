@@ -184,9 +184,87 @@ class _DetailPageState extends State<DetailPage> {
       );
     }
 
-    Widget applyButton() {}
-    Widget cancelButton() {}
-    Widget messageButton() {}
+    Widget applyButton() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 50),
+            height: 45,
+            width: 200,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  isApplied = true;
+                });
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(66),
+                ),
+              ),
+              child: Text(
+                ' Apply for Job',
+                style: whiteTextStyle.copyWith(
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget cancelButton() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 50),
+            height: 45,
+            width: 200,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  isApplied = true;
+                });
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(66),
+                ),
+              ),
+              child: Text(
+                ' Apply for Job',
+                style: whiteTextStyle.copyWith(
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget messageButton() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 20,
+          bottom: 35,
+        ),
+        child: TextButton(
+          onPressed: () {},
+          child: Text(
+            'Message Recruiter',
+            style: greyTextStyle.copyWith(
+              fontWeight: medium,
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       body: Center(
