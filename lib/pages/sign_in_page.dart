@@ -1,11 +1,37 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutterapp_findjobez/models/user_model.dart';
+import 'package:flutterapp_findjobez/providers/auth_provider.dart';
+import 'package:flutterapp_findjobez/providers/user_provider.dart';
 import 'package:flutterapp_findjobez/theme.dart';
+import 'package:provider/provider.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<AuthProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context);
+
+    void showError(String message) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: redColor,
+        ),
+      );
+    }
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(top: 30),
@@ -72,6 +98,7 @@ class SignInPage extends StatelessWidget {
               ),
               child: Center(
                 child: TextFormField(
+                  controller: emailController,
                   cursorColor: primaryColor,
                   style: purpleTextStyle.copyWith(),
                   decoration: InputDecoration.collapsed(
@@ -112,6 +139,7 @@ class SignInPage extends StatelessWidget {
               ),
               child: Center(
                 child: TextFormField(
+                  controller: passwordController,
                   cursorColor: primaryColor,
                   obscureText: true,
                   style: purpleTextStyle.copyWith(),
@@ -131,24 +159,51 @@ class SignInPage extends StatelessWidget {
         margin: EdgeInsets.only(top: 40),
         height: 45,
         width: double.infinity,
-        child: TextButton(
-          onPressed: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/home', (route) => false);
-          },
-          style: TextButton.styleFrom(
-            backgroundColor: primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(66),
-            ),
-          ),
-          child: Text(
-            'Sign In',
-            style: whiteTextStyle.copyWith(
-              fontWeight: medium,
-            ),
-          ),
-        ),
+        child: isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : TextButton(
+                onPressed: () async {
+                  if (emailController.text.isEmpty ||
+                      passwordController.text.isEmpty) {
+                    showError('semua fields harus diisi');
+                  } else {
+                    setState(() {
+                      isLoading = true;
+                    });
+
+                    UserModel user = await authProvider.login(
+                      emailController.text,
+                      passwordController.text,
+                    );
+
+                    setState(() {
+                      isLoading = false;
+                    });
+
+                    if (user == null) {
+                      showError('email atau password salah');
+                    } else {
+                      userProvider.user = user;
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/home', (route) => false);
+                    }
+                  }
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(66),
+                  ),
+                ),
+                child: Text(
+                  'Sign In',
+                  style: whiteTextStyle.copyWith(
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
       );
     }
 
@@ -181,8 +236,7 @@ class SignInPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: defaultMargin,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               header(),
               illustration(),
