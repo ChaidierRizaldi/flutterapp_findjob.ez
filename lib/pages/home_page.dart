@@ -1,13 +1,16 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
+import 'package:flutterapp_findjobez/providers/user_provider.dart';
 import 'package:flutterapp_findjobez/theme.dart';
 import 'package:flutterapp_findjobez/widgets/category_card.dart';
 import 'package:flutterapp_findjobez/widgets/job_tile.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var userProvider = Provider.of<UserProvider>(context);
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -30,7 +33,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Jason Powell',
+                      userProvider.user.name,
                       style: blackTextStyle.copyWith(
                         fontSize: 24,
                         fontWeight: semiBold,
