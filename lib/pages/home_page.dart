@@ -1,5 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, unused_local_variable
 import 'package:flutter/material.dart';
+import 'package:flutterapp_findjobez/models/category_model.dart';
+import 'package:flutterapp_findjobez/models/job_model.dart';
+import 'package:flutterapp_findjobez/providers/category_provider.dart';
+import 'package:flutterapp_findjobez/providers/job_provider.dart';
 import 'package:flutterapp_findjobez/providers/user_provider.dart';
 import 'package:flutterapp_findjobez/theme.dart';
 import 'package:flutterapp_findjobez/widgets/category_card.dart';
@@ -10,7 +14,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var userProvider = Provider.of<UserProvider>(context);
-
+    var categoryProvider = Provider.of<CategoryProvider>(context);
+    var jobProvider = Provider.of<JobProvider>(context);
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -85,33 +90,28 @@ class HomePage extends StatelessWidget {
           ),
           Container(
             height: 200,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                SizedBox(
-                  width: defaultMargin,
-                ),
-                CategroyCard(
-                  imageUrl: 'assets/image_category1.png',
-                  name: 'Web Developer',
-                ),
-                CategroyCard(
-                  imageUrl: 'assets/image_category2.png',
-                  name: 'Mobile Developer',
-                ),
-                CategroyCard(
-                  imageUrl: 'assets/image_category3.png',
-                  name: 'App Designer',
-                ),
-                CategroyCard(
-                  imageUrl: 'assets/image_category4.png',
-                  name: 'Content Writer',
-                ),
-                CategroyCard(
-                  imageUrl: 'assets/image_category5.png',
-                  name: 'Video Grapher',
-                ),
-              ],
+            child: FutureBuilder<List<CategoryModel>>(
+              future: categoryProvider.getCategoies(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  int index = -1;
+                  return ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: snapshot.data.map((category) {
+                      index++;
+                      return Container(
+                        margin: EdgeInsets.only(
+                          left: index == 0 ? defaultMargin : 0,
+                        ),
+                        child: CategoryCard(category),
+                      );
+                    }).toList(),
+                  );
+                }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
           ),
         ],
@@ -137,20 +137,19 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 24,
             ),
-            JobTile(
-              companyLogo: 'assets/icon_google.png',
-              name: 'Front-End Developer',
-              companyName: 'Google',
-            ),
-            JobTile(
-              companyLogo: 'assets/icon_instagram.png',
-              name: 'UI Designer',
-              companyName: 'Instagram',
-            ),
-            JobTile(
-              companyLogo: 'assets/icon_facebook.png',
-              name: 'Data Scientist',
-              companyName: 'Facebook',
+            FutureBuilder<List<JobModel>>(
+              future: jobProvider.getJobs(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return Column(
+                    children: snapshot.data.map((job) => JobTile(job)).toList(),
+                  );
+                }
+
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
             ),
           ],
         ),

@@ -2,8 +2,8 @@ class CategoryModel {
   String id;
   String name;
   String imageUrl;
-  String createdAt;
-  String updateAt;
+  int createdAt;
+  int updateAt;
 
   CategoryModel({
     this.id,

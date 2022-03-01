@@ -1,15 +1,14 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutterapp_findjobez/models/job_model.dart';
 import 'package:flutterapp_findjobez/pages/detail_page.dart';
 import 'package:flutterapp_findjobez/theme.dart';
 
 class JobTile extends StatelessWidget {
-  final String name;
-  final String companyName;
-  final String companyLogo;
+  final JobModel job;
 
-  JobTile({this.name, this.companyName, this.companyLogo});
+  JobTile(this.job);
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +17,15 @@ class JobTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailPage(),
+            builder: (context) => DetailPage(job),
           ),
         );
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            companyLogo,
+          Image.network(
+            job.companyLogo,
             width: 44,
           ),
           SizedBox(
@@ -37,7 +36,7 @@ class JobTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  job.name,
                   style: blackTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: medium,
@@ -47,7 +46,7 @@ class JobTile extends StatelessWidget {
                   height: 2,
                 ),
                 Text(
-                  companyName,
+                  job.companyName,
                   style: greyTextStyle,
                 ),
                 SizedBox(
