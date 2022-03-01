@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutterapp_findjobez/models/job_model.dart';
 import 'package:flutterapp_findjobez/theme.dart';
 
 class DetailPage extends StatefulWidget {
+  final JobModel job;
+  DetailPage(this.job);
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
@@ -39,15 +42,15 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   )
                 : Container(),
-            Image.asset(
-              'assets/icon_google.png',
+            Image.network(
+              widget.job.companyLogo,
               width: 60,
             ),
             SizedBox(
               height: 20,
             ),
             Text(
-              'Front-End Developer',
+              widget.job.name,
               style: blackTextStyle.copyWith(
                 fontSize: 20,
                 fontWeight: semiBold,
@@ -57,7 +60,7 @@ class _DetailPageState extends State<DetailPage> {
               height: 2,
             ),
             Text(
-              'Google, Inc - Jakarta',
+              '${widget.job.companyName} - ${widget.job.location}',
               style: greyTextStyle,
             )
           ],
@@ -109,14 +112,11 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             Column(
-              children: [
-                detailItem(
-                  'Full-Time On Site',
-                ),
-                detailItem(
-                  'Start at \$18,000 per month',
-                ),
-              ],
+              children: widget.job.about
+                  .map(
+                    (text) => detailItem(text),
+                  )
+                  .toList(),
             ),
           ],
         ),
@@ -138,17 +138,11 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             Column(
-              children: [
-                detailItem(
-                  'Candidate must possess at least a Bachelor\'s Degree.',
-                ),
-                detailItem(
-                  'Able to us Microsoft Office and Google based service.',
-                ),
-                detailItem(
-                  'Have an excellent time management, good at organized and details',
-                ),
-              ],
+              children: widget.job.qualifications
+                  .map(
+                    (text) => detailItem(text),
+                  )
+                  .toList(),
             ),
           ],
         ),
@@ -170,14 +164,11 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ),
             Column(
-              children: [
-                detailItem(
-                  'Initiate and promote any programs, events, training, or activities.',
-                ),
-                detailItem(
-                  'Assessing and anticipating needs and collaborate with Division.',
-                ),
-              ],
+              children: widget.job.responsibilities
+                  .map(
+                    (text) => detailItem(text),
+                  )
+                  .toList(),
             ),
           ],
         ),
@@ -227,17 +218,17 @@ class _DetailPageState extends State<DetailPage> {
             child: TextButton(
               onPressed: () {
                 setState(() {
-                  isApplied = true;
+                  isApplied = false;
                 });
               },
               style: TextButton.styleFrom(
-                backgroundColor: primaryColor,
+                backgroundColor: redColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(66),
                 ),
               ),
               child: Text(
-                ' Apply for Job',
+                'Cancel Apply',
                 style: whiteTextStyle.copyWith(
                   fontWeight: medium,
                 ),

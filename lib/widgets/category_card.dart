@@ -1,14 +1,14 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutterapp_findjobez/models/category_model.dart';
 import 'package:flutterapp_findjobez/pages/category_page.dart';
 import 'package:flutterapp_findjobez/theme.dart';
 
-class CategroyCard extends StatelessWidget {
-  final String name;
-  final String imageUrl;
+class CategoryCard extends StatelessWidget {
+  final CategoryModel category;
 
-  CategroyCard({this.name, this.imageUrl});
+  CategoryCard(this.category);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,7 @@ class CategroyCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => CategoryPage(
-              name: name,
-              imageUrl: imageUrl,
+              category: category,
             ),
           ),
         );
@@ -31,15 +30,15 @@ class CategroyCard extends StatelessWidget {
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-              imageUrl,
+            image: NetworkImage(
+              category.imageUrl,
             ),
           ),
         ),
         child: Align(
           alignment: Alignment.bottomLeft,
           child: Text(
-            name,
+            category.name,
             style: whiteTextStyle.copyWith(
               fontSize: 18,
               fontWeight: medium,
