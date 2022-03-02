@@ -40,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Text(
               'Sign In',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -61,11 +61,14 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget illustration() {
       return Container(
-        margin: EdgeInsets.only(top: 40),
+        margin: EdgeInsets.only(
+          top: 40,
+          right: 15,
+        ),
         child: Center(
           child: Image.asset(
             'assets/image_sign_in.png',
-            width: 260,
+            width: 320,
           ),
         ),
       );
@@ -73,13 +76,13 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget inputEmail() {
       return Container(
-        margin: EdgeInsets.only(top: 40),
+        margin: EdgeInsets.only(top: 60),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Email Address',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -94,13 +97,13 @@ class _SignInPageState extends State<SignInPage> {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: inputFieldColor,
+                color: greyChoColor,
               ),
               child: Center(
                 child: TextFormField(
                   controller: emailController,
                   cursorColor: primaryColor,
-                  style: purpleTextStyle.copyWith(),
+                  style: blueTextStyle.copyWith(),
                   decoration: InputDecoration.collapsed(
                     hintText: '',
                   ),
@@ -120,7 +123,7 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Text(
               'Password',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -135,14 +138,14 @@ class _SignInPageState extends State<SignInPage> {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: inputFieldColor,
+                color: greyChoColor,
               ),
               child: Center(
                 child: TextFormField(
                   controller: passwordController,
                   cursorColor: primaryColor,
                   obscureText: true,
-                  style: purpleTextStyle.copyWith(),
+                  style: blueTextStyle.copyWith(),
                   decoration: InputDecoration.collapsed(
                     hintText: '',
                   ),
@@ -220,7 +223,7 @@ class _SignInPageState extends State<SignInPage> {
             },
             child: Text(
               'Create New Account',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontWeight: light,
               ),
             ),

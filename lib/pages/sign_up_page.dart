@@ -42,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Text(
               'Sign Up',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -64,15 +64,12 @@ class _SignUpPageState extends State<SignUpPage> {
     Widget inputImage() {
       return Center(
         child: Container(
-          width: 120,
-          height: 120,
+          width: 140,
+          height: 147,
           margin: EdgeInsets.only(top: 50),
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(
-              color: primaryColor,
-            ),
           ),
           child: Image.asset(
             'assets/image_profile.png',
@@ -89,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Text(
               'Full Name',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -105,10 +102,10 @@ class _SignUpPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(
                   left: 28,
-                  bottom: 20,
-                  top: 20,
+                  bottom: 0,
+                  top: 0,
                 ),
-                fillColor: Color(0xffF1F0F5),
+                fillColor: greyChoColor,
                 filled: true,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -125,7 +122,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 hintText: '',
               ),
-              style: purpleTextStyle,
+              style: blueTextStyle,
             ),
           ],
         ),
@@ -140,7 +137,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Text(
               'Email Address',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -156,10 +153,8 @@ class _SignUpPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(
                   left: 28,
-                  bottom: 20,
-                  top: 20,
                 ),
-                fillColor: Color(0xffF1F0F5),
+                fillColor: greyChoColor,
                 filled: true,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -176,7 +171,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 hintText: '',
               ),
-              style: purpleTextStyle,
+              style: blueTextStyle,
             ),
           ],
         ),
@@ -191,7 +186,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Text(
               'Password',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -208,10 +203,8 @@ class _SignUpPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(
                   left: 28,
-                  bottom: 20,
-                  top: 20,
                 ),
-                fillColor: Color(0xffF1F0F5),
+                fillColor: greyChoColor,
                 filled: true,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -228,7 +221,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 hintText: '',
               ),
-              style: purpleTextStyle,
+              style: blueTextStyle,
             ),
           ],
         ),
@@ -243,7 +236,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             Text(
               'Your Goal',
-              style: greyTextStyle.copyWith(
+              style: chocoTextStyle.copyWith(
                 fontSize: 16,
               ),
             ),
@@ -259,10 +252,8 @@ class _SignUpPageState extends State<SignUpPage> {
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(
                   left: 28,
-                  bottom: 20,
-                  top: 20,
                 ),
-                fillColor: Color(0xffF1F0F5),
+                fillColor: greyChoColor,
                 filled: true,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -279,7 +270,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 hintText: '',
               ),
-              style: purpleTextStyle,
+              style: blueTextStyle,
             ),
           ],
         ),
@@ -288,7 +279,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     Widget signupButton() {
       return Container(
-        margin: EdgeInsets.only(top: 40, bottom: 20),
+        margin: EdgeInsets.only(top: 40, bottom: 40),
         height: 45,
         width: double.infinity,
         child: isLoading

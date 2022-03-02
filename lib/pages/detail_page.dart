@@ -33,12 +33,14 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(48),
-                      color: Color(0xffECEDF1),
+                      color: greyChoColor,
                     ),
                     child: Text(
                       'You have applied this job and the\nrecruiter will contact you',
                       textAlign: TextAlign.center,
-                      style: greyTextStyle.copyWith(),
+                      style: whiteTextStyle.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )
                 : Container(),
@@ -61,7 +63,7 @@ class _DetailPageState extends State<DetailPage> {
             ),
             Text(
               '${widget.job.companyName} - ${widget.job.location}',
-              style: greyTextStyle,
+              style: chocoTextStyle,
             )
           ],
         ),
@@ -249,7 +251,7 @@ class _DetailPageState extends State<DetailPage> {
           onPressed: () {},
           child: Text(
             'Message Recruiter',
-            style: greyTextStyle.copyWith(
+            style: chocoTextStyle.copyWith(
               fontWeight: medium,
             ),
           ),

@@ -47,7 +47,7 @@ class JobTile extends StatelessWidget {
                 ),
                 Text(
                   job.companyName,
-                  style: greyTextStyle,
+                  style: chocoTextStyle,
                 ),
                 SizedBox(
                   height: 18,
