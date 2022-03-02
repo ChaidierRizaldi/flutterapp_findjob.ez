@@ -32,8 +32,8 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Howdy',
-                      style: greyTextStyle.copyWith(
+                      'Hello',
+                      style: chocoTextStyle.copyWith(
                         fontSize: 16,
                       ),
                     ),
@@ -47,14 +47,11 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  width: 58,
-                  height: 58,
+                  width: 68,
+                  height: 68,
                   padding: EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      color: primaryColor,
-                    ),
                   ),
                   child: Image.asset(
                     'assets/image_profile.png',
@@ -168,6 +165,8 @@ class HomePage extends StatelessWidget {
 
     Widget bottomNavBar() {
       return BottomNavigationBar(
+        backgroundColor: whiteColor,
+        type: BottomNavigationBarType.fixed,
         elevation: 0,
         items: [
           BottomNavigationBarItem(
@@ -179,21 +178,21 @@ class HomePage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/icon_notification.png',
+              'assets/notification.png',
               width: 24,
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/icon_love.png',
+              'assets/love.png',
               width: 24,
             ),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/icon_user.png',
+              'assets/user.png',
               width: 24,
             ),
             label: '',
@@ -205,6 +204,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: bottomNavBar(),
       body: body(),
+      backgroundColor: whiteColor,
     );
   }
 }

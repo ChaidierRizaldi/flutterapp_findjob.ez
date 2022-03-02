@@ -8,16 +8,16 @@ const double defaultMargin = 24.0;
 
 // Note: Colors
 
-Color primaryColor = Color(0xff4141A4);
+Color primaryColor = Color(0xff1C658C);
 Color blackColor = Color(0xff272C2F);
-Color whiteColor = Color(0xffFFFFFF);
-Color redColor = Color(0xffFD4F56);
-Color greyColor = Color(0xffB3B5C4);
+Color whiteColor = Color(0xffEEEEEE);
+Color redColor = Color(0xffBB6464);
+Color greyChoColor = Color(0xffD8D2CB);
 Color transparentColor = Colors.transparent;
-Color inputFieldColor = Color(0xffF1F0F5);
+Color chocoColor = Color(0xffC0A080);
 
 // Note: Text Styles
-TextStyle purpleTextStyle = GoogleFonts.poppins(
+TextStyle blueTextStyle = GoogleFonts.poppins(
   color: primaryColor,
 );
 
@@ -34,7 +34,11 @@ TextStyle redTextStyle = GoogleFonts.poppins(
 );
 
 TextStyle greyTextStyle = GoogleFonts.poppins(
-  color: greyColor,
+  color: greyChoColor,
+);
+
+TextStyle chocoTextStyle = GoogleFonts.poppins(
+  color: chocoColor,
 );
 
 // Note: Font Weights

@@ -60,7 +60,7 @@ class OnBoardingPage extends StatelessWidget {
                     ),
                     child: Text(
                       'Get Started',
-                      style: purpleTextStyle.copyWith(
+                      style: blueTextStyle.copyWith(
                         fontWeight: medium,
                       ),
                     ),
