@@ -1,6 +1,6 @@
 # flutterapp_findjobez
 
-A new Flutter project.
+Membangun sebuah aplikasi pencarian kerja IT secara online dan mengelola datanya menggunakan State Management. Tujuan dari proses pembelajaran project tsb yaitu memperdalam bagaimana mengimplementasikan State Management dengan menggunakan Provider agar state dapat tersimpan, maintainable dan mudah digunakan kembali di mana pun dan kapan pun saat dibutuhkan.
 
 ## Getting Started
 
