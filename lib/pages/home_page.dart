@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: 200,
             child: FutureBuilder<List<CategoryModel>>(
-              future: categoryProvider.getCategoies(),
+              future: categoryProvider.getCategories(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   int index = -1;

@@ -1,4 +1,4 @@
-package com.example.flutterapp_findjobez
+package com.aldirizaldi.flutterapp_findjobez
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -5,7 +5,7 @@ import 'package:flutterapp_findjobez/models/category_model.dart';
 import 'package:http/http.dart' as http;
 
 class CategoryProvider with ChangeNotifier {
-  Future<List<CategoryModel>> getCategoies() async {
+  Future<List<CategoryModel>> getCategories() async {
     try {
       var response = await http.get(
         Uri.parse('http://bwa-jobs.herokuapp.com/categories'),
